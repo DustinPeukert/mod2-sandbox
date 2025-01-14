@@ -52,7 +52,6 @@ calculateAverage('swim')  ---> 56
 calculateAverage('run')  ---> 211.6
 calculateAverage('bike')  ---> 302.5
 
-
 Start with:
 - What part(s) of the data do I need to access?  How will I access it? 
 - What are the steps that I need to take to achieve this larger goal?
@@ -61,9 +60,34 @@ As you work:
 - At any point you should be able to explain what you're trying to do with any given line of code you're writing.
 */
 
+// define function calculateAverage(takes an event as a param: ex = 'swim')
+//   variable = iterates over the given event in the ironmanData object (likely using reduce)
+//     grabs the :time value of the current object
+//     adds it to a variable that is keeping track of the total time
+//     iteration should return our variable tracking total time
+//   end of iteration/default value for acc = (0)
 
+//   variable = count of objects in given event
 
+//   new variable = total time divided by count of objects
+//   return average
+// end of function
 
+// call function using console log
+
+// function calculateAverage(eventName) {
+//   let totalTime = ironmanData[eventName].reduce((acc, athlete) => {
+//     let athleteTime = athlete.time;
+//     acc += athleteTime;
+//     return acc;
+//   }, 0)
+
+//   let numOfAthletes = ironmanData[eventName].length;
+//   let averageTime = totalTime / numOfAthletes;
+//   return averageTime;
+// }
+
+// console.log('calculateAverage:', calculateAverage('swim'));
 
 /* Level 2
 
@@ -84,3 +108,70 @@ As you work:
 - At any point you should be able to explain what you're trying to do with any given line of code you're writing.
 */
 
+// define function/takes event name and age as parameters
+  // variable = iterates over specific event data using reduce
+    // if athlete age is equal to age param
+      // athleteTime = athlete.time
+      // acc += athleteTime
+      // return acc
+    // else
+      // return acc
+    // end
+  // end of iteration
+
+  // variable = iterate over event data using reduce
+    // if athleteage == age
+      // acc ++
+      // return acc
+    // else
+      // return acc
+    // end
+    // return acc
+  // end of iteration/default value of 0
+  // average = total time divided by number of athletes
+  // return average
+// end of function
+
+// console log function call
+
+// function calculateAverage(eventName, age) {
+//   let totalTime = ironmanData[eventName].reduce((acc, athlete) => {
+//     if (athlete.age === age) {
+//       let athleteTime = athlete.time;
+//       acc += athleteTime;
+//       return acc;
+//     } else {
+//       return acc;
+//     }
+//   }, 0)
+//   let numofAthletes = ironmanData[eventName].reduce((acc, athlete) => {
+//     if (athlete.age === age) {
+//       acc++;
+//       return acc;
+//     } else {
+//       return acc;
+//     }
+//   }, 0)
+//   let average = totalTime / numofAthletes;
+//   return average;
+// }
+
+// console.log('calculateAverage:', calculateAverage('swim', 29));
+
+// Dry Refactor:
+function calculateAverage(eventName, age) {
+  let totalTime = 0;
+  let numOfAthletes = 0;
+
+  ironmanData[eventName].forEach((athlete) => {
+    if (athlete.age === age) {
+      totalTime += athlete.time;
+      numOfAthletes++;
+    }
+  });
+
+  let average = totalTime / numOfAthletes;
+  return average;
+}
+
+console.log('calculateAverage:', calculateAverage('swim', 29));

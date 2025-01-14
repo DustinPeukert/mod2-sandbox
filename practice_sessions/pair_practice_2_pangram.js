@@ -17,8 +17,13 @@ Write a function that takes in a string and counts how many words are in that st
 countWords(pangram) -->  9
 countWords(quote) -->  13
 */
+function countWords(string) {
+  const words = string.split(' ');
+  return words.length;
+}
 
-
+console.log('Pangram word count:', countWords(pangram));
+console.log('Quote word count:', countWords(quote));
 
 
 
@@ -28,14 +33,23 @@ Write a function that takes in a string and a number. The function should return
 countWordsByLength(pangram, 4) -->  5
 countWordsByLength(quote, 5) -->  7
 */
+function countWordsByLength(string, num) {
+  const words = string.split(' ');
+  let filteredWords = words.filter((word) => {
+    return word.length >= num;
+  })
+  return filteredWords.length;
+}
 
-
-
+console.log('pangram words by length 4:', countWordsByLength(pangram, 4));
+console.log('quote words by length 5:', countWordsByLength(quote, 5));
 
 
 
 /* LEVEL THREE
-Write a function that takes in a string and returns the words in that string as a single object.  The object's keys will be numbers representing the length of each word.  The values will be arrays containing the appropriate words. 
+Write a function that takes in a string and returns the words in that string as a single object.  
+The object's keys will be numbers representing the length of each word.  
+The values will be arrays containing the appropriate words. 
 
 reorganizeWords(panagram) -->  {
   '3': [ 'the', 'fox', 'the', 'dog' ],
@@ -51,3 +65,14 @@ reorganizeWords(quote) -->  {
   '9': [ 'something', 'something' ]
 }
 */
+function reorganizeWords(string) {
+  let words = string.split(' ');
+  let reducedWords = words.reduce((acc, word) => {
+    acc[word.length] = acc[word.length] || [];
+    acc[word.length].push(word);
+    return acc;
+  }, {})
+  return reducedWords;
+}
+
+console.log('reorganizedWords:', reorganizeWords(quote));

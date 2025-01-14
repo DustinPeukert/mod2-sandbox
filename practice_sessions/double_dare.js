@@ -6,9 +6,6 @@ To run the code in this file, run the command:
 */ 
 console.log("double_dare.js is running")
 
-
-
-
 const cakes = [
   {
     type: 'dark chocolate',
@@ -66,6 +63,35 @@ As you work:
 - Think through the code you're writing iteration by iteration. What data is it looking at each iteration, what do you want to do while it's look at that piece of data?
 */
 
+// define function/no arguments
+  // create new array for unique toppings
+
+  // iterate over the array using foreach
+    // if our array does not include topping in the current object
+      // add the topping
+    // end
+  // end of iteration/default 
+
+  // return our unique toppings array
+// end of function
+
+function findToppings() {
+  let uniqueToppings = [];
+
+  cakes.forEach((cake) => {
+    cake_toppings = cake.toppings;
+
+    cake_toppings.forEach((topping) => {
+      if (!uniqueToppings.includes(topping)) {
+        uniqueToppings.push(topping);
+      }
+    })
+  })
+
+  return uniqueToppings;
+}
+
+console.log('findToppings:', findToppings());
 
 
 /* 
@@ -80,6 +106,11 @@ findToppings(pizzas)  --> should return
 ['italian sausage', 'pepperoni', 'mozzarella', 'onions', 'peppers', ...etc]
 */
 
+/*
+define a function that takes an array as an argument
+  
+end of function
+*/
 
 const pizzas = [
   {
